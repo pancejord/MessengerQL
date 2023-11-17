@@ -8,26 +8,18 @@ import Auth from "../components/Auth/Auth"
 import { Session } from 'next-auth';
 
 const page: NextPage = () => {
-    const { data: session, status } = useSession();
+    const { data: session } = useSession();
 
     console.log(session)
-  
-    const handleSignIn = () => {
-      signIn('google');
-    };
-  
-    const handleSignOut = () => {
-      signOut();
-    };
-  
-    if (status === 'loading') {
-      // Loading state: Render a loading indicator or nothing
-      return <div>Loading...</div>;
+
+    const reloadSession = () => {
+
     }
+
   
     return (
       <Box>
-        {session?.user?.username ?  <Chat />  : <Auth/>}
+        {session?.user?.username ?  <Chat /> : <Auth session={session} reloadSession={reloadSession}/>}
       </Box>
     );
   };

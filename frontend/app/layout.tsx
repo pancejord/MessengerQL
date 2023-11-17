@@ -1,8 +1,10 @@
+
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import AuthContext from '@/prisma/AuthContext'
 import ChakraContext from '@/chakra/CharkaContext'
+import ApolloContext from '@/graphql/ApolloContext'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -17,10 +19,12 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <AuthContext>
+    <ApolloContext>
+   <AuthContext>
     <html lang="en">
-      <body className="bg-gray-600">{children}</body>
+      <body className="bg-slate-800">{children}</body>
     </html>
     </AuthContext>
+    </ApolloContext>
   )
 }
